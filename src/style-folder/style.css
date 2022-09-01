@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('../roboto-v30-latin-300.woff2') format('woff2'),
+    url('../roboto-v30-latin-300.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.hello {
+  color: red;
+  font-family: 'MyFont';
+  background: url('../logo.png');
+}
+.top-bar {
+    background: #333 ;
+    color: #f6f6f6;
+    padding: 8px 0;
+    font-size: 0.875rem;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+@media (min-width: 992px){
+.container {
+    max-width: 960px;
+}}
+@media (min-width: 700px){
+.container {
+    max-width: 700px;
+}}@media (min-width: 500px){
+.container {
+    max-width: 500px;
+}}
+
+.info {
+    list-style: none;
+    text-align: center;
+    text-align: -webkit-center;
+}
+.info-text{
+    display: inline-block;
+    margin: 0px 10px 0px 0px;
+    font-size: 90%;
+    white-space: nowrap;
+}
+.info-text a {
+  color: #f6f6f6;
+  font-size: 20px;
+
+
+}
