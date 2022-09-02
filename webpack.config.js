@@ -6,6 +6,7 @@ module.exports = {
       print: './src/javascript/print.js',
       navscript: './src/javascript/navscript.js',
       funcat:'./src/javascript/funcat.js',
+      dom:'./src/javascript/dom.js',
   },
   output: {
     filename: '[name].bundle.js',
