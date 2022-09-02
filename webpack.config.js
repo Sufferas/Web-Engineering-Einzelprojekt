@@ -2,9 +2,10 @@ const path = require('path');
 
 module.exports = {
     entry: {
-      index: './src/javascrip/index.js',
-      print: './src/javascrip/print.js',
-      navscript: './src/javascrip/navscript.js',
+      index: './src/javascript/index.js',
+      print: './src/javascript/print.js',
+      navscript: './src/javascript/navscript.js',
+      funcat:'./src/javascript/funcat.js',
   },
   output: {
     filename: '[name].bundle.js',

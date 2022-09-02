@@ -1,0 +1,16 @@
+.cat-container {
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+div#image img {
+    width: auto;
+    max-height: 600px;
+}
+
+@media only screen and (max-width: 1100px){
+  div#image img {
+      width: 100%;
+      max-height: none;
+}
+}
