@@ -7,6 +7,9 @@ module.exports = {
       navscript: './src/javascript/navscript.js',
       funcat:'./src/javascript/funcat.js',
       dom:'./src/javascript/dom.js',
+      form:'./src/javascript/form.js',
+      validform:'./src/javascript/validform.js',
+
   },
   output: {
     filename: '[name].bundle.js',
