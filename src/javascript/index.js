@@ -7,10 +7,9 @@ function component() {
   const container = document.createElement('div');
   const container_inner = document.createElement('div');
   const row = document.createElement('div');
-  const info= document.createElement('ul');
-  const info_text= document.createElement('li');
-  const text= document.createElement('a');
-
+  const info = document.createElement('ul');
+  const info_text = document.createElement('li');
+  const text = document.createElement('a');
 
   element.classList.add('top-bar');
   container.classList.add('container');
@@ -20,7 +19,6 @@ function component() {
   info_text.classList.add('info-text');
   text.href = 'http://google.com';
   text.innerText = 'Go to Google';
-
 
   element.appendChild(container);
   container.appendChild(container_inner);
