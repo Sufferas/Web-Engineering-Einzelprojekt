@@ -14,6 +14,10 @@ npm install -g sass
 
 npm install -g lighthouse
 
+npm install --save-dev typescript ts-loader
+
+npm install workbox-webpack-plugin --save-dev
+
 ### run 
 npm init -y
 
