@@ -6,34 +6,70 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ release ] # is triggered if push event in release branch occurs
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # run ubuntu
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository
+    - uses: actions/checkout@v3 # checkout your repo - this is an official action provided by GitHub
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+    - name: Build the application
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm i # install dependencies; eg node_modules
+    - run: npm install eslint -g -D
+    - run: eslint --init
+    - run: npm run build # run build
+    - name: Init new repo in dist folder and commit generated files
+      run: |
+        cd dist
+        git init
+        git add -A
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m 'deploy'
+    - name: Force push to destination branch
+      uses: ad-m/github-push-action@master
+      with:
+        # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Destination branch to push changes
+        branch: gh-pages
+        # Use force push to fully overwrite the destination branch
+        force: true
+        # We have to push from the folder where files were generated.
+        # Same were the new repo was initialized in the previous step
+        directory: dist
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-#      - name: Run a multi-line script
-#        run: |
-#          echo test the checkout action,
-#          ls -a
+## A workflow run is made up of one or more jobs that can run sequentially or in parallel
+#jobs:
+#  # This workflow contains a single job called "build"
+#  build:
+#    # The type of runner that the job will run on
+#    runs-on: ubuntu-latest
+#
+#    # Steps represent a sequence of tasks that will be executed as part of the job
+#    steps:
+#      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#      - uses: actions/checkout@v3
+#        with:
+#          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+#          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository
+#
+##      # Runs a single command using the runners shell
+##      - name: Run a one-line script
+##        run: echo Hello, world!
+#
+#      # Runs a set of commands using the runners shell
+##      - name: Run a multi-line script
+##        run: |
+##          echo test the checkout action,
+##          ls -a
