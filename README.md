@@ -21,7 +21,13 @@ npm install workbox-webpack-plugin --save-dev
 ### run 
 npm init -y
 
+npm install --save-dev html-webpack-plugin
+
+npm install --save-dev webpack-dev-server
+
 npm run build
+
+npm start
 
 
 ### bugs 
