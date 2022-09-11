@@ -25,6 +25,8 @@ npm install --save-dev html-webpack-plugin
 
 npm install --save-dev webpack-dev-server
 
+npm rebuild 
+
 npm run build
 
 npm start
