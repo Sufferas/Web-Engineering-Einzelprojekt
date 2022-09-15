@@ -1,3 +1,4 @@
+import validateForm from "./validform"; // just import the validateForm function
 
 function component() {
 
@@ -32,7 +33,7 @@ function component() {
     const inputElementBotton = document.createElement('input');
 
     formElement.setAttribute("name", 'contactForm')
-    formElement.setAttribute("onsubmit", 'return validateForm()')
+    formElement.onsubmit = validateForm;  // add validateForm to your form submit
     formElement.setAttribute("action", '')
     //  error page refresch before valid
     formElement.setAttribute("method", 'post')

@@ -7,7 +7,7 @@ function printError(elemId, hintMsg) {
 }
 
 
-function validateForm() {
+export default function validateForm() {
   var name = document.contactForm.name.value;
   var email = document.contactForm.email.value;
   var mobile = document.contactForm.mobile.value;
